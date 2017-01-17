@@ -5,9 +5,7 @@ import lombok.Data;
 @Data
 public class CreateDorsal {
 
-    private Long raceId;
-    private Long runnerId;
-    private int dorsalNumber;
+    private Integer dorsalNumber;
     private String chipCode;
 
 }
