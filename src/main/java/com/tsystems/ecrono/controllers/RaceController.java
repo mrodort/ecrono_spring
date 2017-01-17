@@ -18,8 +18,8 @@ public class RaceController {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Race getRaceById(@PathVariable("id://d+") Long raceId) {
+    @RequestMapping(value = "{id://d+}", method = RequestMethod.GET)
+    public Race getRaceById(@PathVariable("id") Long raceId) {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
@@ -28,13 +28,13 @@ public class RaceController {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public Race editRace(@PathVariable("id://d+") Long raceId) {
+    @RequestMapping(value = "{id://d+}", method = RequestMethod.PUT)
+    public Race editRace(@PathVariable("id") Long raceId) {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void deleteRace(@PathVariable("id://d+") Long raceId) {
+    @RequestMapping(value = "{id://d+}", method = RequestMethod.DELETE)
+    public void deleteRace(@PathVariable("id") Long raceId) {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 

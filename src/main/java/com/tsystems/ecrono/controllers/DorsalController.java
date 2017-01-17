@@ -15,8 +15,8 @@ public class DorsalController {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 
-    @RequestMapping(value = "races/{raceId}/runners/{runnerId}", method = RequestMethod.DELETE)
-    public Void deleteDorsal(@PathVariable("raceId://d+") Long raceId, @PathVariable("runnerId://d+") Long runnerId) {
+    @RequestMapping(value = "races/{raceId://d+}/runners/{runnerId://d+}", method = RequestMethod.DELETE)
+    public Void deleteDorsal(@PathVariable("raceId") Long raceId, @PathVariable("runnerId") Long runnerId) {
 	throw new IllegalArgumentException("Not implemented yet");
     }
 }
