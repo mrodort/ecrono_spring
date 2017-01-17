@@ -39,7 +39,7 @@ public class RaceEntity {
     private String name;
 
     @Column(name = "distance_in_meters")
-    private Double distanceInMeters;
+    private Float distanceInMeters;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
