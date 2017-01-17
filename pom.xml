@@ -49,6 +49,13 @@
 			<version>2.6.1</version>
 		</dependency>
 
+		<!-- Java 8 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+		</dependency>
+
+
 		<!-- Data Source -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

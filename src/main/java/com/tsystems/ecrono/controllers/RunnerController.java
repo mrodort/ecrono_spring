@@ -31,7 +31,7 @@ public class RunnerController {
 	return crudRunnerUserCase.findAll();
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.GET)
+    @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
     public Runner getRunnerById(@PathVariable("id") Long runnerId) {
 	return crudRunnerUserCase.getRunnerById(runnerId);
     }
@@ -41,12 +41,12 @@ public class RunnerController {
 	return crudRunnerUserCase.createNewRunner(createRunner);
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.PUT)
+    @RequestMapping(value = "{id:\\d+}", method = RequestMethod.PUT)
     public Runner editRunner(@PathVariable("id") Long runnerId, @RequestBody UpdateRunner updateRunner) {
 	return crudRunnerUserCase.updateRunner(runnerId, updateRunner);
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "{id:\\d+}", method = RequestMethod.DELETE)
     public void deleteRunner(@PathVariable("id") Long runnerId) {
 	crudRunnerUserCase.delete(runnerId);
     }

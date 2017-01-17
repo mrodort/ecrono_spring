@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class CreateRace {
 
-    private Long id;
     private String name;
     private Float distanceInMeters;
     private Instant initTime;

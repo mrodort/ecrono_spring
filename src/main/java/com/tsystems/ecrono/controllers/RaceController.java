@@ -31,7 +31,7 @@ public class RaceController {
 	return crudRaceUserCase.findAll();
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.GET)
+    @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
     public Race getRaceById(@PathVariable("id") Long raceId) {
 	return crudRaceUserCase.getRaceById(raceId);
     }
@@ -41,12 +41,12 @@ public class RaceController {
 	return crudRaceUserCase.createNewRace(createRace);
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.PUT)
+    @RequestMapping(value = "{id:\\d+}", method = RequestMethod.PUT)
     public Race editRace(@PathVariable("id") Long raceId, @RequestBody UpdateRace updateRace) {
 	return crudRaceUserCase.updateRace(raceId, updateRace);
     }
 
-    @RequestMapping(value = "{id://d+}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public void deleteRace(@PathVariable("id") Long raceId) {
 	crudRaceUserCase.deleteRace(raceId);
     }
