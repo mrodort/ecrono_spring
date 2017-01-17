@@ -1,9 +1,9 @@
-package com.tsystems.ecrono.dto;
+package com.tsystems.ecrono.dto.update;
 
 import lombok.Data;
 
 @Data
-public class Dorsal {
+public class UpdateDorsal {
 
     private Long raceId;
     private Long runnerId;
