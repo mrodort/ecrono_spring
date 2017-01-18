@@ -15,13 +15,13 @@ import com.tsystems.ecrono.repository.DorsalRepository;
 public class CompetitorUserCase {
 
     private final DorsalRepository dorsalRepository;
-    // private final CompetitorMapper mapper;
+    private final CompetitorMapper mapper;
 
     @Autowired
     public CompetitorUserCase(DorsalRepository dorsalrepository, CompetitorMapper mapper) {
 	super();
 	this.dorsalRepository = dorsalrepository;
-	// this.mapper = mapper;
+	this.mapper = mapper;
     }
 
     public List<Competitor> getCompetitors(Long raceId) {
@@ -30,11 +30,7 @@ public class CompetitorUserCase {
 
 	List<Competitor> resultList = new LinkedList<>();
 	for (DorsalEntity dorsalEntity : dorsals) {
-	    // Competitor competitor = mapper.toCompetitor(dorsalEntity);
-	    Competitor competitor = new Competitor();
-	    competitor.setDorsalNumber(dorsalEntity.getDorsalNumber());
-	    competitor.setRunnerFullName(dorsalEntity.getRunner().getFullName());
-	    competitor.setRunnerId(dorsalEntity.getRunner().getId());
+	    Competitor competitor = mapper.toCompetitor(dorsalEntity);
 	    resultList.add(competitor);
 	}
 
