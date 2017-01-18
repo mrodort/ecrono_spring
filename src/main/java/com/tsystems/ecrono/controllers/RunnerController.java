@@ -3,10 +3,13 @@ package com.tsystems.ecrono.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tsystems.ecrono.dto.Runner;
@@ -27,8 +30,8 @@ public class RunnerController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Runner> getRunners() {
-	return crudRunnerUserCase.findAll();
+    public List<Runner> getRunners(@RequestParam(value = "filterName", required = false) String filterName) {
+	return crudRunnerUserCase.findAll(filterName);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
@@ -37,8 +40,8 @@ public class RunnerController {
     }
 
     @RequestMapping(value = "{fullName}", method = RequestMethod.POST)
-    public Runner createRunner(@RequestBody CreateRunner createRunner) {
-	return crudRunnerUserCase.createNewRunner(createRunner);
+    public ResponseEntity<Runner> createRunner(@RequestBody CreateRunner createRunner) {
+	return new ResponseEntity<Runner>(crudRunnerUserCase.createNewRunner(createRunner), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.PUT)

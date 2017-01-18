@@ -50,10 +50,17 @@ public class CrudRunnerUserCase {
 	return mapper.toRunner(runnerToUpdate);
     }
 
-    public List<Runner> findAll() {
-	List<RunnerEntity> runnerList = runnerRepository.findAll();
-	List<Runner> listToReturn = new LinkedList<>();
+    public List<Runner> findAll(String filterName) {
+	List<Runner> listToReturn;
+	List<RunnerEntity> runnerList;
 
+	if (filterName == null) {
+	    runnerList = runnerRepository.findAll();
+	} else {
+	    runnerList = runnerRepository.findByFullNameContains(filterName);
+	}
+
+	listToReturn = new LinkedList<>();
 	for (RunnerEntity runner : runnerList) {
 	    listToReturn.add(mapper.toRunner(runner));
 	}

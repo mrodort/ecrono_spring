@@ -1,14 +1,20 @@
 package com.tsystems.ecrono.controllers;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tsystems.ecrono.domain.component.RaceType;
 import com.tsystems.ecrono.dto.Race;
 import com.tsystems.ecrono.dto.create.CreateRace;
 import com.tsystems.ecrono.dto.update.UpdateRace;
@@ -27,8 +33,11 @@ public class RaceController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Race> getRaces() {
-	return crudRaceUserCase.findAll();
+    public List<Race> getRaces(@RequestParam(value = "filterType", required = false) RaceType filterType,
+	    @RequestParam(value = "filterDate", required = false) //
+	    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSZ") //
+	    Instant filterDate) {
+	return crudRaceUserCase.findAll(filterType, filterDate);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.GET)
@@ -37,8 +46,8 @@ public class RaceController {
     }
 
     @RequestMapping(value = "{name}", method = RequestMethod.POST)
-    public Race createRace(@RequestBody CreateRace createRace) {
-	return crudRaceUserCase.createNewRace(createRace);
+    public ResponseEntity<Race> createRace(@RequestBody CreateRace createRace) {
+	return new ResponseEntity<Race>(crudRaceUserCase.createNewRace(createRace), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "{id:\\d+}", method = RequestMethod.PUT)

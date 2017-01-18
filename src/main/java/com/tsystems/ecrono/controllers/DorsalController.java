@@ -28,6 +28,7 @@ public class DorsalController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Dorsal> createDorsal(@PathVariable(value = "runnerId") Long runnerId,
 	    @PathVariable(value = "raceId") Long raceId, @RequestBody CreateDorsal createDorsal) {
+
 	try {
 	    Dorsal created = crudDorsalUserCase.createDorsal(raceId, runnerId, createDorsal);
 	    return new ResponseEntity<Dorsal>(created, HttpStatus.CREATED);
