@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -38,6 +39,7 @@ public class DorsalEntity {
     @Column(name = "chip_code", nullable = false)
     private String chipCode;
 
+    @OrderBy("time_stamp ASC")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "dorsal")
     private Set<TimeStampEntity> timeStamps;
 
