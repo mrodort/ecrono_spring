@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Clasificación</h1>
+		<ul>
+			<li th:each="c, status : ${nombre1}">
+				<span th:text="${status.index}"></span>
+				<span th:text="${c.runnerFullName}"></span>
+			</li>
+		</ul>
+	</body>
+</html>

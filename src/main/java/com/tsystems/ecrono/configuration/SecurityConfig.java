@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/races/**").hasAuthority("PROGRAMER")//
 		.antMatchers("/races/**").hasAuthority("ANALYST")//
 		.antMatchers("/users/**").hasAuthority("GOOD")//
+		.antMatchers("/classificationpage/**").permitAll()//
 		.anyRequest().denyAll();
     }
 
