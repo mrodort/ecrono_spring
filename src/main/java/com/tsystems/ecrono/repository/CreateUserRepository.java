@@ -6,4 +6,6 @@ import com.tsystems.ecrono.domain.UserEntity;
 
 public interface CreateUserRepository extends JpaRepository<UserEntity, Long> {
 
+    UserEntity findByUserName(String name);
+
 }
